@@ -38,7 +38,7 @@ function success (pos) {
   document.getElementById('lat').innerHTML = geo.lat
   document.getElementById('long').innerHTML = geo.long
 }
-console.log(geo.lat);
+console.log(`${geo.lat} `);
         xmlhttp.open("GET", url + city + apiKey, true); 
         xmlhttp.send(); 
 
