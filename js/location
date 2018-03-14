@@ -1,0 +1,31 @@
+let myObj;
+let lat;
+let long;
+let position;
+// let geo={};
+const url = "http://api.openweathermap.org/data/2.5/weather?lat=" + latitude + "&lon=" + longitude + "&APPID=5191901e9fce1e3cae9465a2a402c6f0"; // url with json data
+// let city = "kuwait"; // City or town //
+// const apiKey = "&APPID=5191901e9fce1e3cae9465a2a402c6f0";// api key//   
+var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        myObj = JSON.parse(this.responseText);
+        let windSpeed = myObj.wind.speed;
+        let celcius = myObj.main.temp;
+        document.getElementById("current_temp").innerHTML = (celcius).toFixed(1) + "&deg;" + "C";
+        document.getElementById("maxTemp").innerHTML = (myObj.main.temp_max).toFixed(1) + "&deg;" + "C";
+        document.getElementById("minTemp").innerHTML = (myObj.main.temp_min).toFixed(1) + "&deg;" + "C";
+        document.getElementById("humidity").innerHTML = myObj.main.humidity + "%";
+        document.getElementById("windy").innerHTML = (myObj.wind.speed) * 2.236936.toFixed(0) + " mph";
+        document.getElementById("desc").innerHTML = "Today there will be" + "<i>"+myObj.weather[0].main +"</i>";
+        document.getElementById("city").innerHTML = myObj.name;
+
+
+
+
+
+
+};
+
+          xmlhttp.open("GET", url, true); 
+          xmlhttp.send();  
